@@ -1,0 +1,116 @@
+
+// MEDIUM
+@include media_md {
+
+    // HOME PAGE
+    .menu_btn {
+        visibility: hidden;
+    }
+
+    .nav {
+        visibility: visible;
+
+        .menu_nav {
+            display: block;
+            // bring it down to normal position
+            transform: translateY(0);
+            height: 100%;
+            background: transparent;
+            text-align: right;
+
+            &__item {
+                display: inline;
+                padding-right: 1.5rem;
+            }
+
+            &__link {
+                font-size: 1rem;
+            }
+        }
+    }
+
+
+    // ABOUT PAGE
+    .about__bio {
+        font-size: 1.2rem;
+    }
+
+
+    // PROJECT PAGE
+    .projects {
+        &__bio_image {
+            height: 40vh;
+        }
+        &__items {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .text_secondary {
+            font-size: 3rem;
+        }
+    }
+
+
+    // CONTACT PAGE
+    .contact__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+
+// LARGE
+@include media_lg {
+
+    // PROJECT PAGE
+    .projects {
+        &__items {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        footer {
+            transform: 
+                rotate(0deg);
+        }
+
+        .social_icons {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .twitter {
+            font-size: 2rem;
+        }
+    }
+
+
+    // CONTACT PAGE
+    .contact__list {
+        grid-template-columns: repeat(3, 1fr);
+    } 
+
+
+    // copyright flip striagh(|)
+    .about {
+        footer {
+            transform: 
+                rotate(0deg);
+        }
+
+        .social_icons {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+    
+}
+
+
+
+// EXTRA LARGE
+@include media_xl {
+    .projects__bio_image {
+        height: 50vh;
+    }
+}
+
+

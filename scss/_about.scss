@@ -1,0 +1,86 @@
+
+.about {
+    padding-bottom: 2rem;
+
+    &__bio_image {
+        height: 50vh;
+        width: 100%;
+
+        background: 
+            // Blur from left to right
+            linear-gradient(
+                to right,
+                rgba($primary_color, 0.9),
+                rgba($primary_color, 0.3)
+            ),
+            url(../assets/img/aboutME.jpg) center top;
+        background-size: cover;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        // place item at the bottom of the image
+        justify-content: flex-end;
+
+        p {
+            margin-bottom: 2rem;
+        }
+    }
+
+
+    &__bio {
+        width: 80%;
+        text-align: center;
+
+        .text_secondary {
+            padding-bottom: 1rem;
+        }
+    }
+
+
+    .jobs {
+        width: 60vw;
+
+        // another way to center item
+        // top: 2rem, right: auto, down: 0, left: auto
+        margin: 2rem auto 0 auto;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 2rem;
+
+        &__job {
+            background: lighten($primary_color, 10%);
+            padding: 0.5rem;
+            border-bottom: 5px solid $secondary_color;
+
+            h2, h3 {
+                // top and bottom: 0.5rem, left and right: 0
+                margin: 0.5rem 0;
+            }
+
+            h6 {
+                margin: 0.3rem 0;
+            }
+        }
+    }
+
+    .social_icons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .twitter {
+        font-size: 2rem;
+    }
+
+    // copyright flip striagh(|)
+    footer {
+        transform: 
+            rotate(90deg)
+            translate(-3rem, -5rem);
+    }
+}
+
+

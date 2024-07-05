@@ -1,0 +1,45 @@
+.contact {
+    height: 100%;
+    padding-top: 40vh;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    background: 
+        // Blur from left to right
+        linear-gradient(
+            to right,
+            rgba($primary_color, 0.9),
+            rgba($primary_color, 0.3)
+        ),
+        url(../assets/img/CONTACT.jpg) center top;
+    background-size: cover;
+
+
+    h2 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        margin-top: -7rem;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 2rem;
+        font-size: 1.1rem;
+    }
+
+    // place icons under contact list
+    .social_icons {
+        position: initial;
+        margin-top: 2rem;
+    }
+
+    .twitter {
+        font-size: 2rem;
+    }
+
+}

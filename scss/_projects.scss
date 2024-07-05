@@ -1,0 +1,129 @@
+
+.projects {
+    padding-bottom: 2rem;
+
+    &__bio_image {
+        height: 30vh;
+        width: 100%;
+
+        background: 
+            // Blur from left to right
+            linear-gradient(
+                to right,
+                rgba($primary_color, 0.9),
+                rgba($primary_color, 0.3)
+            ),
+            url(../assets/img/projects.jpg) center top;
+        background-size: cover;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        // place item at the bottom of the image
+        justify-content: flex-end;
+
+        .text_secondary {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+
+    &__items {
+        width: 60vw;
+
+        // another way to center item
+        // top: 2rem, right: auto, down: 0, left: auto
+        margin: 2rem auto 0 auto;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 2rem;
+    }
+
+    &__item {
+        position: relative;
+        border-bottom: 5px solid $secondary_color;
+        overflow: hidden;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+        }
+
+        // hiding the icons, until hover to show
+        &::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: $secondary_color;
+            opacity: 0;
+            @include transition_ease;
+        }
+
+        // hover to show
+        &:hover {
+            &::after {
+                top: 0;
+                opacity: 0.9;
+            }
+
+            .projects__btn {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__btns {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        display: grid;
+        // preview on left, github on right
+        grid-template-columns: repeat(2, 1fr);
+
+        align-items: center;
+        text-align: center;
+    }
+
+    // we want it to pop up when we hover
+    &__btn {
+        opacity: 0;
+        // this return black
+        color: set_Text_Color($secondary_color);
+        
+        @include transition_ease;
+
+        &:hover {
+            // "set_Text_Clor($secondary_color);" will return white so I invert it to return black, by enclosing it, in another "set_Text_Color();"
+            color: 
+                set_Text_Color(set_Text_Color($secondary_color));;
+        }
+    }
+
+    .social_icons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .twitter {
+        font-size: 2rem;
+    }
+
+    // copyright flip striagh(|)
+    footer {
+        transform: 
+            rotate(90deg)
+            translate(-3rem, -5rem);
+    }
+
+    
+}
+
+

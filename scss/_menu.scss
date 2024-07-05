@@ -1,0 +1,143 @@
+.menu_btn {
+    position: absolute;
+    z-index: 1;
+    right: 1rem;
+    top: 1rem;
+    //border: 15px solid gray;
+    cursor: pointer;
+    @include transition_ease;
+
+    // THIS IS RESPONSIBLE FOR THE MIDDLE BAR/LINE
+    &__burger {
+        position: absolute;
+        right: 0;
+        top: 0.5rem;
+        //border: 15px solid rgb(180, 95, 95);
+        width: 28px;
+        height: 3px;
+        background: set_Text_Color($primary_color);
+        @include transition_ease;
+
+        // THIS IS RESPONSIBLE FOR THE "menu_btn" TOP BAR/LINE (the outer one on top)
+        &::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            width: 28px;
+            height: 3px;
+            background: set_Text_Color($primary_color);
+            @include transition_ease;
+        }
+
+        // THIS IS RESPONSIBLE FOR THE BOTTOM BAR/LINE
+        &::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            width: 20px;
+            height: 3px;
+            background: set_Text_Color($primary_color);
+            @include transition_ease;
+        }
+
+
+
+        // RESPONSIPLE FOR MEMU BUTTON ROTAION, IT'S ASSCIOTED BY JAVASCRIPT "main.js" for functionalityu
+        &.open {
+            transform: rotate(720deg);
+            background: transparent;
+
+            // RESPONSIBLE FOR MENU BAR/LINE AFTER ROTATION ALIGNMENTS
+            // TOP BAR/LINE
+            &::before {
+                transform: rotate(45deg) translate(5px, 8px);
+            }
+
+            // BOTTOM BAR/LINE
+            &::after {
+                // restore width
+                width: 28px;
+                transform: rotate(-45deg) translate(3px, -7px);
+            }
+
+        }
+    }
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    opacity: 0.98;
+    visibility: hidden;
+
+    &.open {
+        visibility: visible;
+    }
+
+    .menu_nav {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+        background: $primary_color;
+        // remove bullet points
+        list-style-type: none;
+
+        padding-right: 1rem;
+        transform: translateY(-100%);
+        @include transition_ease;
+
+        &.open {
+            transform: translateY(0);
+        }
+
+        &__item {
+            transform: translateX(100vw);
+            @include transition_ease;
+
+            &.open {
+                transform: translateX(0);
+            }
+
+            // TARGETING ACTIVE LINK (PAGE YOU'RE CURRENTLY ON)
+            &.active > a {
+                color: $secondary_color;
+            }
+        }
+
+        &__link {
+            display: inline-block;
+            font-size: 2rem;
+            text-transform: uppercase;
+            padding: 2rem 0;
+            font-weight: 300;
+            @include transition_ease;
+
+            &:hover {
+                color: $secondary_color;
+            }
+        }
+    }
+}
+
+// FOR LOOP IN SCSS
+/*
+    MENU ITEMS MOVING INTO CENTER FROM RIGHT SIDE, ONE BY ONE.
+    WE HAVE 4 ITEMS IN THE MENU, THATS WHY WE HAVE "@for $link from 1 through 4".
+*/
+@for $link from 1 through 4 {
+    // WE'RE ATTACHING ".menu_nav__item" AND THE IT'S CHILDREN USING "nth-child(#{$link})" ONE BY ONE.
+    .menu_nav__item:nth-child(#{$link}) {
+        // ONE EACH LINK WE'RE GOING TO DO A TRANSITION DELAY
+        // SO IT WILL ADD A DELAY TO EACH LINK.
+        transition-delay: ($link * 0.1s) + 0.15s;
+    }
+}
+
+
+
+
